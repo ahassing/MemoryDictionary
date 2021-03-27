@@ -71,7 +71,7 @@ public class Dictionary {
         throw new DoesNotExistException("ERROR, key does not exist");
     }
 
-    public void removeKey(String key) {
+    public void removeKey(String key) throws DoesNotExistException{
         for(Entry entry: entries) {
             if(entry.getKey().equals(key)) {
                 entries.remove(entry);

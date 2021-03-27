@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.hassing.dictionary.exceptions.AlreadyAddedException;
+import com.hassing.dictionary.exceptions.DoesNotExistException;
+
 public class App 
 {
     private static Dictionary dictionary;
@@ -21,6 +24,7 @@ public class App
     }
 
     public static void parseCommand(String command) {
+        int counter = 1;
         String[] split = command.split(" ");
         if (split.length > 3) {
             printHelp();
@@ -28,15 +32,72 @@ public class App
         }
         switch(split[0]) {
             case("KEYS"):
+                List<String> keys = dictionary.getKeys();
+                for(String key: keys) {
+                    System.out.println(counter + ") " + key);
+                    counter++;
+                }
+                break;
             case("MEMBERS"):
+                try {
+                    List<String> members = dictionary.getMembers(split[1]);
+                    for(String key: members) {
+                        System.out.println(counter + ") " + key);
+                        counter++;
+                    }
+                } catch (DoesNotExistException e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
             case("ADD"):
+                try {
+                    dictionary.addMember(split[1], split[2]);
+                    System.out.println("Added");
+                } catch (AlreadyAddedException e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
             case("REMOVE"):
+                try {
+                    dictionary.removeMember(split[1], split[2]);
+                    System.out.println("Removed");
+                } catch (DoesNotExistException e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
             case("REMOVEALL"):
+                try {
+                    dictionary.removeKey(split[1]);
+                    System.out.println("Removed");
+                } catch (DoesNotExistException e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
             case("CLEAR"):
+                dictionary.clearAll();
+                System.out.println("Cleared");
+                break;
             case("KEYEXISTS"):
+                System.out.println(dictionary.keyExists(split[1]));
+                break;
             case("VALUEEXISTS"):
+                System.out.println(dictionary.memberExists(split[1], split[2]));
+                break;
             case("ALLMEMBERS"):
+                List<String> members = dictionary.getAllMembers();
+                for(String member: members) {
+                    System.out.println(counter + ") " + member);
+                }
+                break;
             case("ITEMS"):
+                List<Entry> entries = dictionary.getEntries();
+                for(Entry entry: entries) {
+                    for(String member: entry.getMembers()) {  
+                        System.out.println(counter + ") " + entry.getKey() 
+                            + ": " + member);
+                    }
+                }
+                break;
             default:
                 printHelp();
                 break;
