@@ -25,17 +25,13 @@ public class Dictionary {
         return keys;
     }
 
-    public ArrayList<String> getMembers(String key) throws NoKeysException{
-        ArrayList<String> members = new ArrayList<>(); 
-        // for(Entry entry : entries) {
-        //     if(key.equals(entry.getKey())) {
-        //         members.add(entry.getMember());
-        //     }
-        // }
-        if (members.isEmpty()) {
-            throw new NoKeysException("ERROR: key does not exist");
+    public ArrayList<String> getMembers(String key) throws NoKeysException{ 
+        for(Entry entry : entries) {
+            if(key.equals(entry.getKey())) {
+                return entry.getMembers();
+            }
         }
-        return members;
+        throw new NoKeysException("ERROR: key does not exist");
     }
 
     public void addEntry(Entry entry) throws AlreadyAddedException{

@@ -1,7 +1,6 @@
 package com.hassing.dictionary;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Entry {
     private String key;
