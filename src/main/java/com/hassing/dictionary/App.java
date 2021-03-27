@@ -88,6 +88,10 @@ public class App
     }
 
     public static void printStrings(List<String> strings) {
+        if(strings.isEmpty()) {
+            System.out.println("empty set");
+            return;
+        }
         int counter = 1;
         for(String string: strings) {
             System.out.println(counter + ") " + string);
