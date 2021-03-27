@@ -1,36 +1,37 @@
 package com.hassing.dictionary;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.hassing.dictionary.exceptions.DoesNotExistException;
 import com.hassing.dictionary.exceptions.AlreadyAddedException;
 
 
 public class Dictionary {
-    private ArrayList<Entry> entries;
+    private List<Entry> entries;
 
     public Dictionary() {
         entries = new ArrayList<>();
     }
 
     // used for get all items method as well.
-    public ArrayList<Entry> getEntries() {
+    public List<Entry> getEntries() {
         return entries;
     }
 
-    public void setEntries(ArrayList<Entry> entries) {
+    public void setEntries(List<Entry> entries) {
         this.entries = entries;
     }
 
-    public ArrayList<String> getKeys() {
-        ArrayList<String> keys = new ArrayList<>(); 
+    public List<String> getKeys() {
+        List<String> keys = new ArrayList<>(); 
         for(Entry entry : entries) {
             keys.add(entry.getKey());
         }
         return keys;
     }
 
-    public ArrayList<String> getMembers(String key) throws DoesNotExistException{ 
+    public List<String> getMembers(String key) throws DoesNotExistException{ 
         for(Entry entry : entries) {
             if(key.equals(entry.getKey())) {
                 return entry.getMembers();
@@ -102,8 +103,8 @@ public class Dictionary {
         return false;
     }
 
-    public ArrayList<String> getAllMembers() {
-        ArrayList<String> allMembers = new ArrayList<>();
+    public List<String> getAllMembers() {
+        List<String> allMembers = new ArrayList<>();
         for(Entry entry: entries) {
             allMembers.addAll(entry.getMembers());
         }
