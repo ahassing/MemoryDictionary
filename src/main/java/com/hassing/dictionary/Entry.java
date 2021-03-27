@@ -8,6 +8,8 @@ public class Entry {
     private String key;
     private List<String> members;
 
+    public Entry() {}
+
     public Entry(String key) {
         this.key = key;
         this.members = new ArrayList<>();
