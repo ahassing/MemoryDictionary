@@ -1,4 +1,4 @@
-package com.hassing.dictionary;
+package com.hassing.exceptions.dictionary;
 
 public class AlreadyAddedException extends Exception {
     public AlreadyAddedException(String message) {
