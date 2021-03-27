@@ -1,20 +1,19 @@
 package com.hassing.dictionary;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.processing.SupportedAnnotationTypes;
-
 import com.hassing.dictionary.exceptions.AlreadyAddedException;
 import com.hassing.dictionary.exceptions.DoesNotExistException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DictionaryTest {
 
@@ -23,7 +22,7 @@ public class DictionaryTest {
     private Entry entry1;
     private Entry entry2;
 
-    @Before
+    @BeforeEach
     public void init() {
         dictionary = new Dictionary();
         entry1 = new Entry();
@@ -57,9 +56,11 @@ public class DictionaryTest {
         assertEquals(members, dictionary.getMembers("key1"));
     }
 
-    @Test(expected = DoesNotExistException.class)
+    @Test
     public void testGetMembersWithException() throws DoesNotExistException {
-        dictionary.getMembers("key1");
+        Assertions.assertThrows(DoesNotExistException.class, () -> {
+            dictionary.getMembers("key1");
+        });
     }
 
     @Test
@@ -81,14 +82,16 @@ public class DictionaryTest {
         assertEquals(expected, dictionary.getMembers("key1"));
     }
 
-    @Test(expected = AlreadyAddedException.class)
+    @Test
     public void testAddMemberAlreadyExists() throws AlreadyAddedException, DoesNotExistException {
         entry1.setKey("key1");
         List<String> members = new ArrayList<>(Arrays.asList("members1"));
         entry1.setMembers(members);
         List<Entry> entries = new ArrayList<>(Arrays.asList(entry1));
         dictionary.setEntries(entries);
-        dictionary.addMember("key1", "members1");
+        Assertions.assertThrows(AlreadyAddedException.class, () -> {
+            dictionary.addMember("key1", "members1");
+        });
     }
 
     @Test
@@ -114,19 +117,23 @@ public class DictionaryTest {
         assertTrue(dictionary.getKeys().isEmpty());
     }
 
-    @Test(expected = DoesNotExistException.class)
+    @Test
     public void testRemoveMemberAndKeyDoesNotExist() throws DoesNotExistException {
-        dictionary.removeMember("key1", "members1");
+        Assertions.assertThrows(DoesNotExistException.class, () -> {
+            dictionary.removeMember("key1", "members1");
+        });
     }
 
-    @Test(expected = DoesNotExistException.class)
+    @Test
     public void testRemoveMemberAndMemberDoesNotExist() throws DoesNotExistException {
         entry1.setKey("key1");
         List<String> members = new ArrayList<>(Arrays.asList("members1"));
         entry1.setMembers(members);
         List<Entry> entries = new ArrayList<>(Arrays.asList(entry1));
         dictionary.setEntries(entries);
-        dictionary.removeMember("key1", "members2");
+        Assertions.assertThrows(DoesNotExistException.class, () -> {
+            dictionary.removeMember("key1", "members2");
+        });
     }
 
     @Test
@@ -138,9 +145,11 @@ public class DictionaryTest {
         assertTrue(dictionary.getKeys().isEmpty());
     }
 
-    @Test(expected = DoesNotExistException.class)
+    @Test
     public void testRemoveKeyDoesNotExist() throws DoesNotExistException {
-        dictionary.removeKey("key1");
+        Assertions.assertThrows(DoesNotExistException.class, () -> {
+            dictionary.removeKey("key1");
+        });
     }
 
     @Test
