@@ -62,6 +62,9 @@ public class Dictionary {
             if(entry.getKey().equals(key)) {
                 if(entry.getMembers().contains(member)){
                     entry.removeMember(member);
+                    if(entry.getMembers().isEmpty()) {
+                        entries.remove(entry);
+                    }
                     return;
                 } else {
                     throw new DoesNotExistException("ERROR, value does not exist");

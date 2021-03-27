@@ -87,6 +87,7 @@ public class App
                 List<String> members = dictionary.getAllMembers();
                 for(String member: members) {
                     System.out.println(counter + ") " + member);
+                    counter++;
                 }
                 break;
             case("ITEMS"):
@@ -95,6 +96,7 @@ public class App
                     for(String member: entry.getMembers()) {  
                         System.out.println(counter + ") " + entry.getKey() 
                             + ": " + member);
+                        counter++;
                     }
                 }
                 break;
