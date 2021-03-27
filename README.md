@@ -16,3 +16,4 @@ Add Save/Load feature to write the dictionary to disk.
 Add JaCoco Test Coverage.  
 Add Checkstyle and code quality gates.  
 Add alphbetical ordering.  
+Better input validation.  
