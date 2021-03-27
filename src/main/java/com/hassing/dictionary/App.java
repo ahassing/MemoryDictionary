@@ -17,7 +17,6 @@ public class App
             System.out.print("> ");
             command = scanner.nextLine();
             parseCommand(command);
-            System.out.println(command);
         } while (!command.equals("EXIT"));
     }
 
