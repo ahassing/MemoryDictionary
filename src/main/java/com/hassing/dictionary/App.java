@@ -44,7 +44,7 @@ public class App
             case("ADD"):
                 try {
                     dictionary.addMember(split[1], split[2]);
-                    System.out.println("Added");
+                    System.out.println(") Added");
                 } catch (AlreadyAddedException e) {
                     System.out.println(e.getMessage());
                 }
@@ -52,7 +52,7 @@ public class App
             case("REMOVE"):
                 try {
                     dictionary.removeMember(split[1], split[2]);
-                    System.out.println("Removed");
+                    System.out.println(") Removed");
                 } catch (DoesNotExistException e) {
                     System.out.println(e.getMessage());
                 }
@@ -60,14 +60,14 @@ public class App
             case("REMOVEALL"):
                 try {
                     dictionary.removeKey(split[1]);
-                    System.out.println("Removed");
+                    System.out.println(") Removed");
                 } catch (DoesNotExistException e) {
                     System.out.println(e.getMessage());
                 }
                 break;
             case("CLEAR"):
                 dictionary.clearAll();
-                System.out.println("Cleared");
+                System.out.println(") Cleared");
                 break;
             case("KEYEXISTS"):
                 System.out.println(dictionary.keyExists(split[1]));
@@ -89,7 +89,7 @@ public class App
 
     public static void printStrings(List<String> strings) {
         if(strings.isEmpty()) {
-            System.out.println("empty set");
+            System.out.println(") empty set");
             return;
         }
         int counter = 1;
