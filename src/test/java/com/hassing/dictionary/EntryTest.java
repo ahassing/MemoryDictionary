@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class EntryTest {
     public final String KEY = "KEY";
-    public List<String> MEMBERS = new ArrayList<>(Arrays.asList("member1", "member2"));
+    public final List<String> MEMBERS = new ArrayList<>(Arrays.asList("member1", "member2"));
 
     public final Entry entry = new Entry();
     @Test
