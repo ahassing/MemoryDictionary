@@ -32,19 +32,11 @@ public class App
         }
         switch(split[0]) {
             case("KEYS"):
-                List<String> keys = dictionary.getKeys();
-                for(String key: keys) {
-                    System.out.println(counter + ") " + key);
-                    counter++;
-                }
+                printStrings(dictionary.getKeys());
                 break;
             case("MEMBERS"):
                 try {
-                    List<String> members = dictionary.getMembers(split[1]);
-                    for(String key: members) {
-                        System.out.println(counter + ") " + key);
-                        counter++;
-                    }
+                    printStrings(dictionary.getMembers(split[1]));
                 } catch (DoesNotExistException e) {
                     System.out.println(e.getMessage());
                 }
@@ -84,25 +76,33 @@ public class App
                 System.out.println(dictionary.memberExists(split[1], split[2]));
                 break;
             case("ALLMEMBERS"):
-                List<String> members = dictionary.getAllMembers();
-                for(String member: members) {
-                    System.out.println(counter + ") " + member);
-                    counter++;
-                }
+                printStrings(dictionary.getAllMembers());
                 break;
             case("ITEMS"):
-                List<Entry> entries = dictionary.getEntries();
-                for(Entry entry: entries) {
-                    for(String member: entry.getMembers()) {  
-                        System.out.println(counter + ") " + entry.getKey() 
-                            + ": " + member);
-                        counter++;
-                    }
-                }
+                printEntries(dictionary.getEntries());
                 break;
             default:
                 printHelp();
                 break;
+        }
+    }
+
+    public static void printStrings(List<String> strings) {
+        int counter = 1;
+        for(String string: strings) {
+            System.out.println(counter + ") " + string);
+            counter++;
+        }
+    }
+
+    public static void printEntries(List<Entry> entries) {
+        int counter = 1;
+        for(Entry entry: entries) {
+            for(String member: entry.getMembers()) {  
+                System.out.println(counter + ") " + entry.getKey() 
+                    + ": " + member);
+                counter++;
+            }
         }
     }
 
