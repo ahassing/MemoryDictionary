@@ -1,13 +1,16 @@
 package com.hassing.dictionary;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class Entry {
     private String key;
-    private ArrayList<String> members;
+    private List<String> members;
 
     public Entry(String key) {
         this.key = key;
+        this.members = new ArrayList<>();
     }
 
     public String getKey() {
@@ -18,11 +21,11 @@ public class Entry {
         this.key = key;
     }
 
-    public ArrayList<String> getMembers() {
+    public List<String> getMembers() {
         return members;
     }
 
-    public void setMembers(ArrayList<String> members) {
+    public void setMembers(List<String> members) {
         this.members = members;
     }
 
