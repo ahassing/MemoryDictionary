@@ -11,10 +11,10 @@ import java.util.List;
 import org.junit.Test;
 
 public class EntryTest {
-    public final String KEY = "KEY";
-    public final List<String> MEMBERS = new ArrayList<>(Arrays.asList("member1", "member2"));
+    private final String KEY = "KEY";
+    private final List<String> MEMBERS = new ArrayList<>(Arrays.asList("member1", "member2"));
 
-    public final Entry entry = new Entry();
+    private final Entry entry = new Entry();
     @Test
     public void testGetAndSetKey() {
         entry.setKey(KEY);
