@@ -13,6 +13,6 @@ In the root directory, run `mvn clean package`.
 # Future work
 Add logging.  
 Add Save/Load feature to write the dictionary to disk.  
-Add JaCoco Test Coverage.
-Add Checkstyle and code quality gates.
+Add JaCoco Test Coverage.  
+Add Checkstyle and code quality gates.  
 Add alphbetical ordering.  
