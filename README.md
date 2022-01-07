@@ -1,5 +1,5 @@
 # MemoryDictionary
-Coding Challenge
+Coding Challenge for Spreetail technical interview. 
 
 # Build Information
 Requirements:  
